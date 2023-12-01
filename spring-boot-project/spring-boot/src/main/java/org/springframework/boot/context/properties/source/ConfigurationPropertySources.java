@@ -77,6 +77,7 @@ public final class ConfigurationPropertySources {
 			attached = null;
 		}
 		if (attached == null) {
+			//将之前已有的PropertySources作为ConfigurationPropertySourcesPropertySource构造函数的参数
 			sources.addFirst(new ConfigurationPropertySourcesPropertySource(ATTACHED_PROPERTY_SOURCE_NAME,
 					new SpringConfigurationPropertySources(sources)));
 		}
