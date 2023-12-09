@@ -354,6 +354,7 @@ public class SpringApplication {
 			 */
 			prepareContext(context, environment, listeners, applicationArguments, printedBanner);
 			//注册关闭钩子函数到JVM支持程序的优雅关闭
+			//并刷新上下文
 			refreshContext(context);
 			afterRefresh(context, applicationArguments);
 			stopWatch.stop();

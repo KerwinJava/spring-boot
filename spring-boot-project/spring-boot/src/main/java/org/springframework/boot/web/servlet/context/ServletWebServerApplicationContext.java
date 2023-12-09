@@ -155,6 +155,7 @@ public class ServletWebServerApplicationContext extends GenericWebApplicationCon
 	protected void onRefresh() {
 		super.onRefresh();
 		try {
+			//字面意思 创建web服务器
 			createWebServer();
 		}
 		catch (Throwable ex) {
@@ -170,10 +171,15 @@ public class ServletWebServerApplicationContext extends GenericWebApplicationCon
 		super.doClose();
 	}
 
+	/**
+	 * 创建服务器 并更新配置资源
+	 */
 	private void createWebServer() {
 		WebServer webServer = this.webServer;
 		ServletContext servletContext = getServletContext();
 		if (webServer == null && servletContext == null) {
+			//根据定义的工厂类生成web服务器，后面贴了一段工厂类配置示例
+			//todo tomcat容器怎么启动、运行、销毁的 后面再分析 先欠着
 			ServletWebServerFactory factory = getWebServerFactory();
 			this.webServer = factory.getWebServer(getSelfInitializer());
 			getBeanFactory().registerSingleton("webServerGracefulShutdown",
